@@ -10,14 +10,14 @@ module.exports = {
            
     return axios.get(requestUrl).then(function (res) {
       if (res.data.cod && res.data.message) {
-        throw new Error("Cannot find the city");
+        throw new Error(res.data.message);
       } else {
         // debugger;
         return res.data.main.temp;
         
       }
     }, function (res) {
-      throw new Error("Cannot find the city");
+      throw new Error("Unable to fetch Weather for that location");
     });
   }
 }
